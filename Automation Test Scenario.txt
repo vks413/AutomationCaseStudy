@@ -1,0 +1,60 @@
+ 
+ WebDriver driver= new ChromeDriver();
+ 
+ 
+ *********Step1********
+
+ driver.navigate().to("https://www.channelnewsasia.com"); 
+ 
+ *********Step2*********
+ driver.getTitle().contains("https://www.channelnewsasia.com");
+ 
+ *********Step3*********
+ WebElement element = driver.findElement(By.Xpath("//*[@class='layout__region layout__region--second']//h1//a"));  
+ 
+ String headline = element.getText();
+ String winHandleBefore = driver.getWindowHandle();
+        for(String winHandle : driver.getWindowHandles()){
+            driver.switchTo().window(winHandle);
+        }
+ element.click();
+ 
+  *********Step4*********
+  WebElement element2 = driver.findElement(By.Xpath("//article[1][@role="article"]//h1]"));  
+  String headline2 = element.getText();element2.getText();
+  if(headline.equalsIgnoreCase(headline2))
+              	System.out.println("The expected heading is same as actual heading");
+        	else
+              	System.out.println("The expected heading is not same as actual heading");
+  	}
+ 
+ 
+ 
+ 
+   *********Step5*********
+  JavascriptExecutor js= (JavascriptExecutor) driver;
+  driver.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+  
+  
+   *********Step6*********
+  WebElement element2 = driver.findElement(By.Xpath("//article[2][@role="article"]//h1]")); 
+  string news2 = element2.getText();
+  element2.click();
+  
+   *********Step7*********
+  WebElement newslink = driver.findElement(By.Xpath("//a[contains(text(),'Expand to read the full story')]")); 
+  
+  ================================================Automation 2nd Test Scenario======================================================================
+ *********Step1********
+
+ driver.navigate().to("https://www.channelnewsasia.com/international"); 
+ 
+  *********Step2********
+ WebElement CountryLink = driver.findElement(By.Xpath(//*[@id="main-nav"]//a[text()='Singapore'])); 
+ 
+   *********Step3********
+String url = driver.getCurrentUrl();
+Assert.assertEquals(url, "https://www.channelnewsasia.com/singapore");
+
+
+
